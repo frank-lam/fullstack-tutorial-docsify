@@ -1,0 +1,78 @@
+{
+  "name": "docsify-themeable",
+  "version": "0.6.0",
+  "description": "A delightfully simple theme system for docsify.js. Features multiple themes with rich customization options, an improved desktop and mobile experience, and legacy browser support (IE10+).",
+  "author": "John Hildenbiddle",
+  "license": "MIT",
+  "homepage": "https://jhildenbiddle.github.io/docsify-themeable/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://jhildenbiddle@github.com/jhildenbiddle/docsify-themeable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jhildenbiddle/docsify-themeable/issues"
+  },
+  "keywords": [
+    "css",
+    "custom",
+    "docs",
+    "docsify",
+    "documentation",
+    "properties",
+    "theme",
+    "themes",
+    "themeable",
+    "variables"
+  ],
+  "browserslist": [
+    "ie >= 10"
+  ],
+  "files": [
+    "dist",
+    "src/scss/themes/defaults"
+  ],
+  "main": "dist/js/docsify-themeable.js",
+  "unpkg": "dist/js/docsify-themeable.min.js",
+  "scripts": {
+    "prepare": "run-s clean build",
+    "build": "npm-run-all build:scss --parallel build:js build:pcss",
+    "build:js": "rollup -c",
+    "build:pcss": "postcss build/css/**/*.css --dir dist/css --use postcss-remove-null postcss-discard-empty postcss-flexbugs-fixes autoprefixer --map",
+    "build:scss": "node-sass --output-style compressed src/scss/themes -o build/css --source-map true --source-map-contents true --include-path node_modules",
+    "clean": "rimraf build/* dist/* docs/css docs/js",
+    "serve": "node server.js",
+    "start": "run-p watch serve",
+    "watch": "run-p 'build:* -- -w'",
+    "prewatch": "npm run build:scss",
+    "version": "npm run prepare"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "autoprefixer": "^9.4.2",
+    "browser-sync": "^2.26.3",
+    "compression": "^1.7.3",
+    "css-vars-ponyfill": "^1.15.3",
+    "eslint": "^5.9.0",
+    "eslint-plugin-html": "^5.0.0",
+    "include-media": "^1.4.9",
+    "lodash.merge": "^4.6.1",
+    "node-sass": "^4.10.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^7.0.6",
+    "postcss-cli": "^6.0.1",
+    "postcss-discard-empty": "^4.0.1",
+    "postcss-flexbugs-fixes": "^4.1.0",
+    "postcss-remove-null": "^1.2.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.67.4",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-eslint": "^5.0.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-uglify": "^6.0.0",
+    "sass-utilities": "0.0.4"
+  },
+  "dependencies": {}
+}
