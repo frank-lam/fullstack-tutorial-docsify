@@ -21,6 +21,24 @@
      * Or generate this active link:
      *   <link rel="stylesheet" title="Bar" href="path/to/file.css" >
      */
+    function imgAdd(){
+        
+        var imgs = document.querySelectorAll('.content img');
+                for(let j = 0;j<imgs.length;j++){
+                    console.log('zheshi')
+                    let img = imgs[j];
+                    if(img.src && img.src.includes('assets')){
+                        if(!img.getAttribute('hadassets')){
+                            let hasharr = window.location.hash.split('/');
+                            let origin = window.location.origin;
+                            img.setAttribute('hadassets',1);
+                            img.src = origin + '/' + hasharr[1] + '/' + hasharr[2] + '/' + img.src.substring(origin.length +1);
+                        }
+                      
+    
+                    }
+                }
+    }
     function initStyleSwitcher() {
         var isInitialzed      = false;
         var sessionStorageKey = 'activeStylesheetHref';
@@ -92,7 +110,10 @@
             // Restore active stylesheet
             document.addEventListener('DOMContentLoaded', function() {
                 var activeHref = sessionStorage.getItem(sessionStorageKey);
-
+                setTimeout(function(){
+                    imgAdd();
+                },200)
+                
                 if (activeHref) {
                     handleSwitch(activeHref);
                 }
@@ -102,7 +123,8 @@
             document.addEventListener('click', function(evt) {
                 var dataHref  = evt.target.getAttribute('data-link-href');
                 var dataTitle = evt.target.getAttribute('data-link-title')
-
+                
+                imgAdd();
                 if (dataHref || dataTitle) {
                     dataTitle = dataTitle
                         || evt.target.textContent
