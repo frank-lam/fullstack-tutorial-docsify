@@ -50,8 +50,7 @@
     function imgAdd() {
         var imgs = document.querySelectorAll('.markdown-section img');
         // var imgs = document.getElementsByTagName('medium-zoom-image');
-        console.log(imgs[1].getAttribute("src"));
-        console.log(imgs.length);
+
         for (let j = 0; j < imgs.length; j++) {
             // console.log('zheshi')
             let img = imgs[j];
@@ -67,8 +66,13 @@
                     for(var i = 1; i < hasharr.length - 1 ; i++){
                         hasharrPath += hasharr[i] + "/";
                     }
+                    
                     // img.src = origin + '/' + hasharrPath  + img.src.substring(origin.length + 1);
-                    img.src = origin + '/' + hasharrPath  + img.getAttribute("src");
+                    var imgSrc = img.getAttribute("src");
+                    if(!imgSrc.includes(hasharrPath)){
+                        img.setAttribute("src", hasharrPath  + imgSrc);
+                    }
+                    // img.src = origin + '/' + hasharrPath  + img.getAttribute("src");
                 }
             }
         }
@@ -149,7 +153,7 @@
                 }
                 setTimeout(function () {
                     imgAdd();
-                }, 100)
+                }, 40)
 
             });
 
@@ -159,7 +163,7 @@
                 var dataTitle = evt.target.getAttribute('data-link-title')
                 setTimeout(function () {
                     imgAdd();
-                }, 100)
+                }, 40)
                 // imgAdd();
                 if (dataHref || dataTitle) {
                     dataTitle = dataTitle
