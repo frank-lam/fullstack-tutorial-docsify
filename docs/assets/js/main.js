@@ -146,14 +146,14 @@
             isInitialzed = true;
             // Restore active stylesheet
             document.addEventListener('DOMContentLoaded', function () {
+                setTimeout(function () {
+                    imgAdd();
+                }, 200)
                 var activeHref = sessionStorage.getItem(sessionStorageKey);
 
                 if (activeHref) {
                     handleSwitch(activeHref);
                 }
-                setTimeout(function () {
-                    imgAdd();
-                }, 100)
 
             });
 
@@ -161,11 +161,7 @@
             document.addEventListener('click', function (evt) {
                 var dataHref = evt.target.getAttribute('data-link-href');
                 var dataTitle = evt.target.getAttribute('data-link-title')
-                // setTimeout(function () {
-                //     imgAdd();
-                // }, 40)
-                
-                // imgAdd();
+
                 if (dataHref || dataTitle) {
                     dataTitle = dataTitle
                         || evt.target.textContent
