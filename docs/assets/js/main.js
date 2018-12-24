@@ -153,7 +153,7 @@
                 }
                 setTimeout(function () {
                     imgAdd();
-                }, 40)
+                }, 100)
 
             });
 
@@ -161,9 +161,10 @@
             document.addEventListener('click', function (evt) {
                 var dataHref = evt.target.getAttribute('data-link-href');
                 var dataTitle = evt.target.getAttribute('data-link-title')
-                setTimeout(function () {
-                    imgAdd();
-                }, 40)
+                // setTimeout(function () {
+                //     imgAdd();
+                // }, 40)
+                
                 // imgAdd();
                 if (dataHref || dataTitle) {
                     dataTitle = dataTitle
@@ -173,6 +174,9 @@
                     handleSwitch(dataHref, dataTitle);
                     evt.preventDefault();
                 }
+                setTimeout(function () {
+                    imgAdd();
+                }, 40)
             });
         }
     }
