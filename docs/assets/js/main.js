@@ -176,7 +176,7 @@
                 }
                 setTimeout(function () {
                     imgAdd();
-                }, 100)
+                }, 300)
             });
         }
     }
