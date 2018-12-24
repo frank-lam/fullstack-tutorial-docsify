@@ -148,13 +148,17 @@
             document.addEventListener('DOMContentLoaded', function () {
                 setTimeout(function () {
                     imgAdd();
-                }, 200)
+                }, 300)
                 var activeHref = sessionStorage.getItem(sessionStorageKey);
 
                 if (activeHref) {
                     handleSwitch(activeHref);
                 }
 
+               
+                // document.querySelector(".markdown-section").click();
+        
+                
             });
 
             // Update active stylesheet
@@ -172,7 +176,7 @@
                 }
                 setTimeout(function () {
                     imgAdd();
-                }, 40)
+                }, 100)
             });
         }
     }
